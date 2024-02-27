@@ -10,15 +10,17 @@ With the standard `eth_sendRawTransaction` interface, you can only send one tran
 
 <h2> Extension API  <img align="center" height="32" src="./img/code-circle.svg">  </h2>
 
-Arcology Network supports the standard RPC API provided by Ethereum. In addition, it offers an extra interface called `arcol_sendRawTransactions`to support batched transactions for better performance. It is very similar to the standard `eth_sendRawTransaction` interface, but it is designed to accept batched raw transactions in a single request for better performance. For more information, please refer to the [RPC API]() document.
+Arcology Network supports the standard RPC API provided by Ethereum. In addition, it offers an extra interface called `arcol_sendRawTransactions`to support batched transactions for better performance. It is very similar to the standard `eth_sendRawTransaction` interface, but it is designed to accept batched raw transactions in a single request for better performance. 
+
+For more information, please refer to the [RPC API]() document.
 
 <h2> Toolkit  <img align="center" height="32" src="./img/key.svg">  </h2>
 
 The toolkit provides a set of tools to generate transactions in batch, sign and save them to files, load and send them to the network, wait for their execution, parse receipts, and handle events. It also comes with the ability to monitor the status of the network.
 
-`network-monitor.js` is a lightweight tool to monitor the status of the network. It calculates the maximum TPS (Transactions Per Second), real TPS, and blocks within one minute a moving window. It also provides the ability to monitor the status of the network.
+1. `network-monitor.js` is a lightweight tool to monitor the status of the network. It calculates the maximum TPS (Transactions Per Second), real TPS, and blocks within one minute a moving window. It also provides the ability to monitor the status of the network.
 
-`send-tx.js` loads raw transactions from files and sends them to the network.
+2. `send-tx.js` loads raw transactions from files and sends them to the network.
 
 <h2> Usage   <img align="center" height="32" src="./img/palett.svg">  </h2>
 
