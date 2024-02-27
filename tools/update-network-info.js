@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 /**
- * Reads and Analyze a file containing addresses and public keys, and updates the network.json file.
+ * Reads and Analyze a cvs file containing accounts and addresses, and updates the network.json file.
  * @async
  * @function main
  * @returns {Promise<void>} A promise that resolves when the processing is complete.
@@ -36,16 +36,16 @@ async function main() {
     const lis=lines.split('\n')
 
     var addrs=new Array();
-    var pks=new Array();
+    var accts=new Array();
     for(i=0;i<lis.length;i++){
       if(lis[i].length==0){
         continue
       }
-      pks.push(lis[i].split(',')[0])
+      accts.push(lis[i].split(',')[0])
       addrs.push(lis[i].split(',')[1])
     }
 
-    nets.L2.accounts=pks
+    nets.L2.accounts=accts
     nets.L2.addrs=addrs
     fs.writeFileSync(args[1],JSON.stringify(nets, null, 2));
     console.timeEnd('processtime')
