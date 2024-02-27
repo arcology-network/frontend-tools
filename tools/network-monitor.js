@@ -1,5 +1,5 @@
 
-var ptool = require('@arcologynetwork/frontend/tools') 
+var frontendUtil = require('@arcologynetwork/frontend-util/utils/util') 
 const hre = require("hardhat");
 
 /**
@@ -9,7 +9,7 @@ const hre = require("hardhat");
  * @returns {Promise<void>} A promise that resolves when the monitoring is complete.
  */
 async function main() {
-    var args = process.argv.splice(1);
+    var args = process.argv.splice(2);
     if(args.length!=1){
       console.log('Please provide the RPC provider to connect.');
       return;
@@ -33,7 +33,7 @@ async function main() {
       })
       
       if(uncreated){
-        await ptool.sleep(1000);
+        await frontendUtil.sleep(1000);
         continue;
       }
 

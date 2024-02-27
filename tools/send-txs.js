@@ -1,6 +1,5 @@
 const hre = require("hardhat");
-var benchtools = require('@arcologynetwork/benchmarktools/tools') 
-const nets = require('../network.json');
+var frontendUtil = require('@arcologynetwork/frontend-util/utils/util') 
 
 /**
  * This script reads in a file containing raw transaction data, splits the data into individual transactions,
@@ -19,7 +18,7 @@ async function main() {
 
   const provider = new hre.ethers.providers.JsonRpcProvider(args[0]);
   console.time('loading file')
-  const flines=benchtools.readfile(args[1])
+  const flines=frontendUtil.readFile(args[1])
   console.timeEnd('loading file')
 
   console.time('send time')
