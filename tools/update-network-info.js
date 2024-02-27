@@ -1,7 +1,8 @@
 const fs = require("fs");
 
 /**
- * Reads and Analyze a cvs file containing accounts and addresses, and updates the network.json file.
+ * Reads and Analyze a cvs file containing accounts and addresses, and updates the network.json, which will be 
+ * used later to initialize the test accounts when starting the network
  * @async
  * @function main
  * @returns {Promise<void>} A promise that resolves when the processing is complete.

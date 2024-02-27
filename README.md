@@ -21,6 +21,8 @@ The toolkit provides a set of tools to generate transactions in batch, sign and 
 1. `network-monitor.js` is a lightweight tool to monitor the status of the network. It calculates the maximum TPS (Transactions Per Second), real TPS, and blocks within one minute a moving window. It also provides the ability to monitor the status of the network.
 
 2. `send-tx.js` loads raw transactions from files and sends them to the network.
+   
+3. `update-network-info.js' reads the account and address information from a csv file and updates the network.json accordingly, which will be used to send later to initialize the test accounts when starting the network.
 
 <h2> Usage   <img align="center" height="32" src="./img/palett.svg">  </h2>
 
