@@ -4,9 +4,7 @@ This project is designed to facilitate interaction with the Arcology Network. It
 
 <h2> Eth RPC  <img align="center" height="32" src="./img/ethereum.svg">  </h2>
 
-On the Ethereum network, the standard RPC API is designed to accept a single raw transaction and cannot handle batched transactions. But the original Ethereum API lacks the ability to send transactions in batch, which is essential for improving network performance. 
-
-With the standard `eth_sendRawTransaction` interface, you can only send one transaction at a time. This is not efficient in some cases for the Arcology Network, which is designed to handle a large number of transactions in parallel. 
+On the Ethereum network, the standard RPC API is designed to accept a single raw transaction and cannot handle batched transactions.With the standard `eth_sendRawTransaction` interface, you can only send one transaction at a time. There is no way to send multiple transactions in a single request, which cannot fully utilize the network's parallel processing capability.
 
 <h2> Extension API  <img align="center" height="32" src="./img/code-circle.svg">  </h2>
 
