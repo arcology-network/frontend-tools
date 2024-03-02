@@ -1,5 +1,6 @@
+const fs = require("fs");
+const readline = require("readline");
 const hre = require("hardhat");
-var frontendUtil = require('@arcologynetwork/frontend-util/utils/util') 
 
 /**
  * This script reads in a file containing raw transaction data, splits the data into individual transactions,
@@ -15,31 +16,32 @@ async function main() {
     console.log('Please provide the RPC provider and the file containing the transaction data.');
     return;
   }
-
-  const provider = new hre.ethers.providers.JsonRpcProvider(args[0]);
-  console.time('loading file')
-  const flines=frontendUtil.readFile(args[1])
-  console.timeEnd('loading file')
-
+  let counter=0;
   console.time('send time')
-  const lines=flines.split('\n')
-
+  const provider = new hre.ethers.providers.JsonRpcProvider(args[0]);
   var txs=new Array();
-  for(i=0;i<lines.length;i++){
-    if(lines[i].length==0){
-      continue
+  const readStream = fs.createReadStream(args[1], 'utf-8');
+  let rl = readline.createInterface({input: readStream})
+  rl.on('line', (line) => {
+    if(line.length==0){
+      return
     }
-    txs.push(lines[i].split(',')[0])
+    txs.push(line.split(',')[0])
     if(txs.length>=1000){
       provider.send("arcol_sendRawTransactions", [...txs]);
+      counter=counter+txs.length;
       txs=new Array();
     }
-  }
-
-  if(txs.length>0){
-    provider.send("arcol_sendRawTransactions", [...txs]);
-  }
-  console.timeEnd('send time')
+  });
+  rl.on('error', (error) => console.log(error.message));
+  rl.on('close', () => {
+    if(txs.length>0){
+      provider.send("arcol_sendRawTransactions", [...txs]);
+      counter=counter+txs.length;
+    }
+    console.log(`Transactions Send completed,total ${counter}`);
+    console.timeEnd('send time')
+  })
 }
 
 // We recommend this pattern to be able to use async/await everywhere
