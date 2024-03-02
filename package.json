@@ -1,6 +1,6 @@
 {
   "name": "@arcologynetwork/frontend-tools",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "This is a toolkit for benchmark",
   "main": "",
   "scripts": {},
@@ -27,6 +27,6 @@
     "web3": "^1.10.4"
   },
   "dependencies": {
-    "@arcologynetwork/frontend-util": "^1.0.2"
+    "@arcologynetwork/frontend-util": "^1.0.3"
   }
 }
