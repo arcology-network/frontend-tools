@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 
 var frontendUtil = require('@arcologynetwork/frontend-util/utils/util') 
 const hre = require("hardhat");
