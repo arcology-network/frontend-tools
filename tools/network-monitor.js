@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var frontendUtil = require('@arcologynetwork/frontend-util/utils/util') 
-const hre = require("hardhat");
+
 
 /**
  * Monitors the network by calculating the transactions per second (TPS) in real-time.
@@ -16,34 +16,26 @@ async function main() {
       return;
     }
 
-    const provider = new hre.ethers.providers.JsonRpcProvider(args[0]);
-    let startBlocknum= await provider.send("eth_blockNumber");
+    const client =await frontendUtil.startRpc(args[0])
+    let startBlocknum=await frontendUtil.rpcRequest(client,"eth_blockNumber",[])
+
     let loop=true;
     let blocknum=parseInt(startBlocknum);
     var blocksWithInOneMinute=new Array();
     let maxTps=0;
     while (loop) {
       let block;
-      let uncreated=false;
-      await provider.send("eth_getBlockByNumber", ['0x'+(blocknum).toString(16),false])
-      .then((b) => {
-          block=b;
-      })
-      .catch((error) => {
-          uncreated=true;
-      })
-      
-      if(uncreated){
+      block=await frontendUtil.rpcRequest(client,"eth_getBlockByNumber",['0x'+(blocknum).toString(16),false])
+      if(block==undefined){
         await frontendUtil.sleep(1000);
         continue;
       }
-
       blocksWithInOneMinute.push(block);
       const hashes=block.transactions;
       let successful=0;
       let fail=0;
       for(i=0;i<hashes.length;i++){
-        const receipt=await provider.send("eth_getTransactionReceipt", [hashes[i]]);
+        const receipt=await frontendUtil.rpcRequest(client,"eth_getTransactionReceipt",[hashes[i]])
         if(receipt.status=='0x1'){
           successful=successful+1;
         }else{
