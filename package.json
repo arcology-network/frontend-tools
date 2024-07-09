@@ -1,6 +1,6 @@
 {
   "name": "@arcologynetwork/frontend-tools",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "This is a toolkit for benchmark",
   "main": "",
   "scripts": {},
@@ -19,7 +19,8 @@
   "bin": {
     "arcology.net-monitor": "./tools/network-monitor.js",
     "arcology.net-info-updator": "./tools/update-network-info.js",
-    "arcology.net-tx-sender": "./tools/send-txs.js"
+    "arcology.net-tx-sender": "./tools/send-txs.js",
+    "arcology.genesis-updator": "./tools/update-genesis.js"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.5",
