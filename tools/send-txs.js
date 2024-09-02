@@ -58,7 +58,7 @@ function sentxs(file,client){
     }
     txs.push(line.split(',')[0])
     if(txs.length>=1000){
-      frontendUtil.rpcRequest(client,"arcol_sendRawTransactions",[...txs])
+      frontendUtil.rpcRequest(client,"arn_sendRawTransactions",[...txs])
       counter=counter+txs.length;
       txs=new Array();
     }
@@ -66,7 +66,7 @@ function sentxs(file,client){
   rl.on('error', (error) => console.log(error.message));
   rl.on('close', () => {
     if(txs.length>0){
-      frontendUtil.rpcRequest(client,"arcol_sendRawTransactions",[...txs])
+      frontendUtil.rpcRequest(client,"arn_sendRawTransactions",[...txs])
       counter=counter+txs.length;
       filenames=file.split('/')
       console.log(`The file ${filenames[filenames.length-1]} is sent successfully,total ${counter}`);
