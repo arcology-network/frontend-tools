@@ -18,11 +18,6 @@ async function main() {
       return;
     }
 
-    if (!filePath.endsWith("network.json")){
-      console.log('The second argument should be the network.json.');
-      return;
-    }
-
     console.time('loading file')
     const lines=fs.readFileSync(args[0],'utf8')
     console.timeEnd('loading file')
@@ -48,8 +43,8 @@ async function main() {
       addrs.push(lis[i].split(',')[1])
     }
 
-    nets.L2.accounts=accts
-    nets.L2.addrs=addrs
+    nets.TestnetInfo.accounts=accts
+    nets.TestnetInfo.addrs=addrs
     fs.writeFileSync(args[1],JSON.stringify(nets, null, 2));
     console.timeEnd('processtime')
   }
