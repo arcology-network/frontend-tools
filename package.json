@@ -1,6 +1,6 @@
 {
   "name": "@arcologynetwork/frontend-tools",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "This is a toolkit for benchmark",
   "main": "",
   "scripts": {},
@@ -33,7 +33,7 @@
     "web3": "^1.10.4"
   },
   "dependencies": {
-    "@arcologynetwork/frontend-util": "^1.0.7",
+    "@arcologynetwork/frontend-util": "^1.0.8",
     "@mahsumurebe/jrpc-client": "^2.2.0"
   }
 }
