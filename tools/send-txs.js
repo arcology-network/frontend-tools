@@ -69,9 +69,8 @@ function sentxs(file,client){
       frontendUtil.rpcRequest(client,"arn_sendRawTransactions",[...txs])
       counter=counter+txs.length;
       filenames=file.split('/')
-      console.log(`The file ${filenames[filenames.length-1]} is sent successfully,total ${counter}`);
+      console.log(`The file ${filenames[filenames.length-1]} is sent,total ${counter}`);
     }
-    
   });
 }
 
