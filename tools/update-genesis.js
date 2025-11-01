@@ -39,8 +39,8 @@ async function main() {
     for(i=0;i<lis.length;i++){
       if(lis[i].length==0){
         continue
-      }
-      balance = { "balance": lis[i].split(',')[2]};
+      }      
+      balance = { "balance": ''+ensureHexPrefix(lis[i].split(',')[2])};
       alloc[lis[i].split(',')[1]]=balance;
     }
 
@@ -49,6 +49,17 @@ async function main() {
     console.timeEnd('processtime')
   }
 
+  function ensureHexPrefix(str) {
+    if (typeof str !== 'string') {
+      throw new TypeError('Input must be a string');
+    }
+
+    if (str.startsWith('0x') || str.startsWith('0X')) {
+      return str;
+    }
+
+    return '0x' + str;
+  }
   // We recommend this pattern to be able to use async/await everywhere
   // and properly handle errors.
   main().catch((error) => {
